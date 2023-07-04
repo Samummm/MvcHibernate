@@ -41,6 +41,10 @@ public class UserDAOImp implements UserDAO {
         }
     }
 
+    public User getUser(Integer id) {
+        return entityManager.find(User.class, id);
+    }
+
     public List<User> getAllUsers() {
         TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u", User.class);
         return query.getResultList();

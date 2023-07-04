@@ -13,5 +13,6 @@ public interface UserService {
     public void updateUser(User user);
 
     public void deleteUser(Integer id);
+    public User getUser(Integer id);
     public List<User> getAllUsers();
 }

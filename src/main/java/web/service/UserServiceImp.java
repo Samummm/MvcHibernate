@@ -40,6 +40,9 @@ public class UserServiceImp implements UserService {
         userDAO.deleteUser(id);
     }
 
+    public User getUser(Integer id){
+        return userDAO.getUser(id);
+    }
     @Override
     public List<User> getAllUsers() {
         return userDAO.getAllUsers();
