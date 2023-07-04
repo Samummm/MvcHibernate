@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class UserDAOImp implements UserDAO{
+public class UserDAOImp implements UserDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -26,7 +26,7 @@ public class UserDAOImp implements UserDAO{
         entityManager.persist(user);
     }
 
-    public User getUserById(Long id) {
+    public User getUserById(Integer id) {
         return entityManager.find(User.class, id);
     }
 
@@ -34,7 +34,7 @@ public class UserDAOImp implements UserDAO{
         entityManager.merge(user);
     }
 
-    public void deleteUserById(Long id) {
+    public void deleteUser(Integer id) {
         User user = entityManager.find(User.class, id);
         if (user != null) {
             entityManager.remove(user);
