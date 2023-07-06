@@ -18,7 +18,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/")
+    @GetMapping("/main")
+    @ResponseBody
     public String showAllUsers (ModelMap model) {
         model.addAttribute("users", userService.getAllUsers());
         return "index";
@@ -38,7 +39,7 @@ public class UserController {
             user.setId(userId);
             userService.updateUser(user);
         }
-        return "redirect:/";
+        return "redirect:/main";
     }
 
     @RequestMapping(value = "/update", method = {RequestMethod.GET, RequestMethod.POST})
@@ -50,7 +51,7 @@ public class UserController {
     @RequestMapping(value ="/delete", method = {RequestMethod.GET, RequestMethod.POST})
     public String deleteUser(@RequestParam(value = "userId") Integer id) {
         userService.deleteUser(id);
-        return "redirect:/";
+        return "redirect:/main";
     }
 
 }
