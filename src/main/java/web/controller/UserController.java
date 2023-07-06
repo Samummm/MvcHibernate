@@ -8,12 +8,13 @@ import web.model.User;
 import web.service.UserService;
 
 @Controller
-public class MainController {
+@RequestMapping("/user")
+public class UserController {
 
     private UserService userService;
 
     @Autowired
-    public MainController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -23,13 +24,13 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/userInfo")
+    @GetMapping("/info")
     public String addUser(ModelMap model) {
         model.addAttribute("user", new User());
         return "userInfo";
     }
 
-    @PostMapping("/saveUser")
+    @PostMapping("/save")
     public String saveUser(@ModelAttribute("user") User user, @RequestParam(value = "userId", defaultValue = "0") Integer userId) {
         if (userId == 0) {
             userService.addUser(user);
@@ -40,13 +41,13 @@ public class MainController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/updateUser", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/update", method = {RequestMethod.GET, RequestMethod.POST})
     public String updateUser(@RequestParam(value = "userId") Integer id, ModelMap model) {
         model.addAttribute("user", userService.getUser(id));
         return "userInfo";
     }
 
-    @RequestMapping(value ="/deleteUser", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value ="/delete", method = {RequestMethod.GET, RequestMethod.POST})
     public String deleteUser(@RequestParam(value = "userId") Integer id) {
         userService.deleteUser(id);
         return "redirect:/";

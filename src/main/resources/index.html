@@ -21,15 +21,15 @@
             <td th:utext="${user.getSurname()}">...</td>
             <td th:utext="${user.getAge()}">...</td>
             <td>
-                <a th:href="@{'/updateUser?userId=' + ${user.getId()}}"><input type="button" value="Update"></a>
+                <a th:href="@{'/update?userId=' + ${user.getId()}}"><input type="button" value="Update"></a>
             </td>
             <td>
-                <a th:href="@{'/deleteUser?userId=' + ${user.getId()}}"><input type="button" value="Delete"></a>
+                <a th:href="@{'/delete?userId=' + ${user.getId()}}"><input type="button" value="Delete"></a>
             </td>
         </tr>
     </table>
     <br/>
-    <input type="button" value="Add" onclick="window.location.href = 'userInfo'">
+    <input type="button" value="Add" onclick="window.location.href = 'info'">
 </div>
 </body>
 </html>

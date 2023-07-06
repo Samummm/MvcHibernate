@@ -1,4 +1,4 @@
-package web.Config;
+package web.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
